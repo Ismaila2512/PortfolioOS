@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-os",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix os ci && npm --prefix room ci && npm --prefix room run build && npm --prefix os run build && mkdir -p room/public/os && cp -R os/build/. room/public/os/",
+    "dev:room": "npm --prefix room run dev",
+    "dev:os": "PORT=3001 npm --prefix os start"
+  }
+}
