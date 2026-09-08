@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { isWebGLAvailable } from '../../Utils/WebGL';
 import eventBus from '../EventBus';
 
 type LoadingProps = {};
@@ -110,19 +111,7 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
         return `${monthFormatted}/${dayFormatted}/${year}`;
     };
 
-    const detectWebGLContext = () => {
-        var canvas = document.createElement('canvas');
-
-        // Get WebGLRenderingContext from canvas element.
-        var gl =
-            canvas.getContext('webgl') ||
-            canvas.getContext('experimental-webgl');
-        // Report the result.
-        if (gl && gl instanceof WebGLRenderingContext) {
-            return true;
-        }
-        return false;
-    };
+    const detectWebGLContext = () => isWebGLAvailable();
 
     return (
         <div
